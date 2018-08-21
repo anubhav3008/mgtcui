@@ -9,7 +9,7 @@
     "predeploy": "npm run build",
     "start": "node server.js",
     "postinstall": "npm run build",
-    "prod": "webpack-dev-server --port $PORT"
+    "prod": "webpack-dev-server --port $PORT --host 0.0.0.0"
 
   },
   "dependencies": {
