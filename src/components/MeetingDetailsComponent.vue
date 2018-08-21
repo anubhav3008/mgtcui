@@ -105,7 +105,7 @@
         methods: {
             search(){
                 axios
-                    .get('http://mgtc.herokuapp.com/meetings/'+this.meetingNumber)
+                    .get('https://mgtc.herokuapp.com/meetings/'+this.meetingNumber)
                     .then(response => (this.meetingDetails = response.data))
                     .catch(error => console.log(error))
             }

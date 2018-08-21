@@ -49,7 +49,7 @@
         methods: {
             search(){
                 axios
-                    .get('http://mgtc.herokuapp.com/meetings/')
+                    .get('https://mgtc.herokuapp.com/meetings/')
                     .then(response => (this.meetingList = response.data))
                     .catch(error => console.log(error))
             }
