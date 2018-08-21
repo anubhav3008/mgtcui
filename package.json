@@ -7,8 +7,10 @@
     "dev": "webpack-dev-server --inline --hot",
     "build": "cross-env NODE_ENV=production webpack --progress --hide-modules",
     "predeploy": "npm run build",
-    "deploy": "surge --project . --domain vue-2-simple-routing-example.surge.sh",
-    "start": "webpack-dev-server --inline --hot"
+    "start": "node server.js",
+    "postinstall": "npm run build",
+    "prod": "webpack-dev-server --port 5000"
+
   },
   "dependencies": {
     "axios": "^0.18.0",
