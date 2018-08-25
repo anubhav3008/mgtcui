@@ -1,105 +1,62 @@
 <template>
     <div>
-        Meeting summary:
-        <table class="table table-condensed">
-            <thead>
-            <tr>
-                <th>id</th>
-                <th>TTM</th>
-                <th>Grammarian</th>
-                <th>Ah counter</th>
-                <th>TMOD</th>
-                <th>Timer</th>
-                <th>GE</th>
-                <th>Theme</th>
-            </tr>
-            </thead>
-            <tbody>
-            <tr>
-                <td><input type="text" v-model="meeting.id"/></td>
-                <td><input type="text" v-model="meeting.ttmName"/></td>
-                <td><input type="text" v-model="meeting.grammarianName"/></td>
-                <td><input type="text" v-model="meeting.ahCounterName"/></td>
-                <td><input type="text" v-model="meeting.tmodName"/></td>
-                <td><input type="text" v-model="meeting.timerName"/></td>
-                <td><input type="text" v-model="meeting.geName"/></td>
-                <td><input type="text" v-model="meeting.theme"/></td>
-            </tr>
-            </tbody>
-        </table>
-        Speech
-        <input type="text" v-model="speech_project"/>
-        <input type="text" v-model="speech_speaker_name"/>
-        <input type="text" v-model="speech_speaker_id"/>
-        <input type="text" v-model="speech_evaluator_name"/>
-        <input type="text" v-model="speech_evaluator_id"/>
-        <input type="text" v-model="speech_date"/>
-        <input type="text" v-model="speech_time_min"/>
-        <input type="text" v-model="speech_time_max"/>
-        <button v-on:click="addSpeech">Add speech</button>
-        <table class="table table-condensed" v-if="speech">
-            <thead>
-            <tr>
-                <th>id</th>
-                <th>project</th>
-                <th>Speaker Name</th>
-                <th>Speaker ID</th>
-                <th>Evaluator Name</th>
-                <th>Evaluator id</th>
-                <th>date</th>
-                <th>Time min</th>
-                <th>Time max</th>
-            </tr>
-            </thead>
-            <tbody>
-            <tr  v-for="meeting in speech" :key="meeting.id">
-                <td>{{meeting.id}}</td>
-                <td>{{meeting.projectName}}</td>
-                <td>{{meeting.speakerName}}</td>
-                <td>{{meeting.speakerId}}</td>
-                <td>{{meeting.evaluatorName}}</td>
-                <td>{{meeting.evaluatorId}}</td>
-                <td>{{meeting.date}}</td>
-                <td>{{meeting.timeMin}}</td>
-                <td>{{meeting.timeMax}}</td>
-            </tr>
-            </tbody>
-        </table>
+    <div align="right">
+    <b-form inline>
+    <b-form-input type="text" placeholder="meeting number" v-model="searchMeetingNumber"/>
+    <b-button variant="primary" v-on:click="search">Fetch meeting</b-button>
+    </b-form>
+    </div>
+    <b-form inline>
+                <b-col lg="2">Meeting number</b-col>
+                <b-col lg="4"><b-form-input type="text" v-model="meeting.id" placeholder="meeting number"> </b-form-input></b-col> 
+                <b-col lg="2">TTM name</b-col>
+                <b-col lg="4"><b-form-input type="text" v-model="meeting.ttmName"  placeholder="ttm name"/> </b-form-input></b-col> 
+                <b-col lg="2">Grammarian name</b-col>
+                <b-col lg="4"><b-form-input type="text" v-model="meeting.grammarianName"  placeholder="grammarian name"/> </b-form-input></b-col> 
+                <b-col lg="2">Ah counter name</b-col>
+                <b-col lg="4"><b-form-input type="text" v-model="meeting.ahCounterName"  placeholder="ah counter name"/> </b-form-input></b-col> 
+                <b-col lg="2">TMOD name</b-col>
+                <b-col lg="4"><b-form-input type="text" v-model="meeting.tmodName"  placeholder="tmod name"/> </b-form-input></b-col> 
+                <b-col lg="2">Timer name</b-col>
+                <b-col lg="4"><b-form-input type="text" v-model="meeting.timerName" placeholder="timer name"/> </b-form-input></b-col> 
+                <b-col lg="2">GE name</b-col>
+                <b-col lg="4"><b-form-input type="text" v-model="meeting.geName" placeholder="GE name"/> </b-form-input></b-col> 
+                <b-col lg="2">Theme</b-col>
+                <b-col lg="4"><b-form-input type="text" v-model="meeting.theme"  placeholder="theme"/> </b-form-input></b-col> 
+    </b-form>
 
-        Goals
-        <input type="text" v-model="goal_userId"/>
-        <input type="text" v-model="goal_userName"/>
-        <input type="text" v-model="goal_projectName"/>
-        <input type="text" v-model="goal_date"/>
-        <input type="text" v-model="goal_meeting_id"/>
-        <button v-on:click="addGoal">Add Goal</button>
-        <table class="table table-condensed" v-if="goal">
-            <thead>
-            <tr>
-                <th>id</th>
-                <th>user Id</th>
-                <th>user name</th>
-                <th>Project Name</th>
-                <th>date</th>
-                <th>meeting Id</th>
-            </tr>
-            </thead>
-            <tbody>
-            <tr  v-for="goal in goal" :key="goal.id">
-                <td>{{goal.id}}</td>
-                <td>{{goal.userId}}</td>
-                <td>{{goal.userName}}</td>
-                <td>{{goal.projectName}}</td>
-                <td>{{goal.date}}</td>
-                <td>{{goal.meetingId}}</td>
-            </tr>
-            </tbody>
-        </table>
-
-        <button  v-on:click="addOrUpdate">Add/update Meeting</button>
-        <input type="text" v-model="searchMeetingNumber"/>
-        <button  v-on:click="search">Search Meeting</button>
-
+    <br>
+    <hr>
+    <b-form inline>
+            
+            <b-col lg="3"><b-form-input type="text" v-model="speech_project" placeholder="speech project name"></b-form-input></b-col> 
+            <b-col lg="3"><b-form-input type="text" v-model="speech_speaker_name" placeholder="speech speaker name"></b-form-input></b-col> 
+            <b-col lg="3"><b-form-input type="text" v-model="speech_speaker_id" placeholder="speech speaker id"></b-form-input></b-col> 
+            <b-col lg="3"><b-form-input type="text" v-model="speech_evaluator_name" placeholder="speech evaluator name"></b-form-input></b-col> 
+            <b-col lg="3"><b-form-input type="text" v-model="speech_evaluator_id" placeholder="speech evaluator id"></b-form-input></b-col> 
+            <b-col lg="3"><b-form-input type="date" v-model="speech_date" placeholder="speech date"></b-form-input></b-col> 
+            <b-col lg="3"><b-form-input type="text" v-model="speech_time_min" placeholder="min time"></b-form-input></b-col> 
+            <b-col lg="3"><b-form-input type="text" v-model="speech_time_max" placeholder="max time"></b-form-input></b-col> 
+    </b-form>
+    <div align="center">
+            <b-button variant="primary" v-on:click="addSpeech">Add speech</b-button>
+    </div>
+    <hr>
+    <b-table striped hover small responsive=true stacked="md" :items="speech"></b-table>
+    <b-form inline>
+        <b-col lg="4"><b-form-input type="text" v-model="goal_userId" placeholder="user id"/></b-col>
+        <b-col lg="4"><b-form-input type="text" v-model="goal_userName" placeholder="user name"/></b-col>
+        <b-col lg="4"><b-form-input type="text" v-model="goal_projectName" placeholder="project name"/></b-col>
+        <b-col lg="4"><b-form-input type="text" v-model="goal_date" placeholder="date"/></b-col>
+        <b-col lg="4"><b-form-input type="text" v-model="goal_meeting_id" placeholder="meeting number"/></b-col>
+    </b-form>
+     <div align="center">
+         <b-button variant="primary" v-on:click="addGoal">Add Goal</b-button>
+    </div>
+    <b-table striped hover small responsive=true stacked="md" :items="goal"></b-table>
+     <div align="center">
+         <b-button variant="primary" v-on:click="addOrUpdate">Add/update Meeting</b-button>
+    </div>
     </div>
 </template>
 
@@ -108,7 +65,12 @@
     import axios from 'axios'
     import VueAxios from 'vue-axios'
     import Vue from 'vue'
-    Vue.use(VueAxios, axios)
+    import BootstrapVue from 'bootstrap-vue'
+    import 'bootstrap/dist/css/bootstrap.css'
+    import 'bootstrap-vue/dist/bootstrap-vue.css'
+    Vue.use(VueAxios, axios);
+    Vue.use(BootstrapVue);
+
     export default {
 
         data(){
