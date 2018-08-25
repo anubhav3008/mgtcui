@@ -1,6 +1,7 @@
 <template>
     <div>
-     <button  v-on:click="search">All Meetings</button>
+     All meetings<br>
+     <button  v-on:click="search">Refresh</button>
 
 
         <table class="table table-condensed" v-if="meetingList.data">
@@ -53,7 +54,9 @@
                     .then(response => (this.meetingList = response.data))
                     .catch(error => console.log(error))
             }
-
+        },
+        created:function () {
+         this.search();
         }
     }
 </script>
