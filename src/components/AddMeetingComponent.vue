@@ -41,8 +41,17 @@
     <div align="center">
             <b-button variant="primary" v-on:click="addSpeech">Add speech</b-button>
     </div>
+    
+
+    <b-table striped hover small responsive=true stacked="md" :items="speech" :fields="speechTableFeilds" v-if="speech.length>0">
+
+        <template slot="delete" slot-scope="row">
+            <b-button size="sm" @click.stop="deleteSpeech(row.index)">Delete</b-button>
+
+        </template>
+
+    </b-table>
     <hr>
-    <b-table striped hover small responsive=true stacked="md" :items="speech"></b-table>
     <b-form inline>
         <b-col lg="4"><b-form-input type="text" v-model="goal_userId" placeholder="user id"/></b-col>
         <b-col lg="4"><b-form-input type="text" v-model="goal_userName" placeholder="user name"/></b-col>
@@ -53,7 +62,13 @@
      <div align="center">
          <b-button variant="primary" v-on:click="addGoal">Add Goal</b-button>
     </div>
-    <b-table striped hover small responsive=true stacked="md" :items="goal"></b-table>
+    <b-table striped hover small responsive=true stacked="md" :items="goal" :fields="goalTableFeilds" v-if="goal.length>0">
+     <template slot="delete" slot-scope="row">
+            <b-button size="sm" @click.stop="deleteGoal(row.index)">Delete</b-button>
+    </template>
+    </b-table>
+
+    <br>
      <div align="center">
          <b-button variant="primary" v-on:click="addOrUpdate">Add/update Meeting</b-button>
     </div>
@@ -91,10 +106,11 @@
                 goal_projectName:"",
                 goal_date:"",
                 goal_meeting_id:"",
-                searchMeetingNumber:""
+                searchMeetingNumber:"",
+                speechTableFeilds:['id','meetingId','projectName', 'speakerName','speakerId','evaluatorName','evaluatorId','date','timeMin','timeMax','delete'],
+                goalTableFeilds:['id','userId','userName','projectName','date','meetingId','delete']
               }
         },
-
         methods: {
             addOrUpdate(){
                 axios
@@ -138,7 +154,14 @@
                         this.meeting=response.data.data.meeting;
                     })
                     .catch(error => console.log(error))
-            }
+            },
+            deleteSpeech(index){
+                this.speech.splice(index,1);
+               },
+            deleteGoal(index){
+                this.goal.splice(index,1);
+            }   
+
         }
     }
 </script>
