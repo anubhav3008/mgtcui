@@ -1,5 +1,8 @@
 <template>
     <div>
+          <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css">
+
+
     <div align="right">
     <b-form inline>
     <b-form-input type="text" placeholder="meeting number" v-model="searchMeetingNumber"/>
@@ -72,9 +75,218 @@
      <div align="center">
          <b-button variant="primary" v-on:click="addOrUpdate">Add/update Meeting</b-button>
     </div>
-    </div>
-</template>
 
+    <hr>
+    <div v-if= "meeting.ttmName || meeting.grammarianName || meeting.ahCounterName || meeting.tmodName || meeting.timerName || meeting.geName || meeting.theme || speech.length>0 || goal.length>0">
+    <div id="pdf">
+        <b-container fluid>
+        <b-row>
+            <b-col>
+                <div align="center">
+                    <h4>{{clubName}}</h4>
+                        <h5>
+                Meeting # {{meeting.id}}<br>
+                Date and Time  :  {{meeting.timing}}<br>
+                Venue:  {{meeting.venue}}<br>
+                Meeting Theme : {{meeting.theme}}
+                        </h5>
+                  </div>
+            </b-col>
+        </b-row>
+        <b-row>
+       <h4>Introduction Section</h4>   
+        <table class="table table-bordered">
+    <thead>
+      <tr>
+        <th class="col-xs-1">Time in minute</th>
+        <th class="col-xs-2">Role player</th>
+        <th class="col-xs-6">event</th>
+        <th class="col-xs-3">Name of role player</th>
+      </tr>
+    </thead>
+    <tbody>
+      <tr>
+        <td>1</td>
+        <td>SAA</td>
+        <td>Reading of Toastmaster's mission, general meeting guidance and handover to Presiding officer</td>
+        <td>{{saa}}</td>
+      </tr>
+       <tr>
+        <td>2</td>
+        <td>Presiding Officer</td>
+        <td>Welcome the audience, call guests to introduce and introduction of TMOD</td>
+        <td>{{president}}</td>
+      </tr>
+       <tr>
+        <td>2</td>
+        <td>TMOD</td>
+        <td>Brief on meeting structure, describe ballot and introduce word of the day and Introduce GE</td>
+        <td>{{meeting.tmodName}}</td>
+      </tr>
+       <tr>
+        <td>3</td>
+        <td>GE</td>
+        <td>Role description by GE, supplementary role players introduction and role description by each role player (Timer, Grammarian, Ah counter) and handing over the stage back to TMOD</td>
+        <td>{{meeting.geName}}</td>
+      </tr>
+      <tr>
+        <td>5</td>
+        <td>TMOD</td>
+        <td>Theme Presentation - Part 1</td>
+        <td>{{meeting.tmodName}}</td>
+      </tr>
+     </tbody>
+    </table>
+    </b-row>
+    <b-row>
+    <h4>Section 1: Prepared Speeches</h4> 
+    <table class="table table-bordered">
+        <thead>
+        <tr>
+            <th class="col-xs-1">Min time in minute</th>
+            <th class="col-xs-1">max time in minute</th>
+            <th class="col-xs-3">Speaker</th>
+            <th class="col-xs-3">Evaluator</th>
+            <th class="col-xs-4">Project Name</th>
+        </tr>
+        </thead>
+        <tbody>
+            <tr v-for="sp in speech">
+                <td>{{sp.timeMin}}</td>
+                <td>{{sp.timeMax}}</td>
+                <td>{{sp.speakerName}}</td>
+                <td>{{sp.evaluatorName}}</td>
+                <td>{{sp.projectName}}</td>
+            </tr>
+        </tbody>
+    </table>
+    <table class="table table-bordered">
+    <thead>
+      <tr>
+        <th class="col-xs-1">Time in minute</th>
+        <th class="col-xs-2">Role player</th>
+        <th class="col-xs-6">event</th>
+        <th class="col-xs-3">Name of role player</th>
+      </tr>
+    </thead>
+    <tbody>
+     <tr>
+        <td>1</td>
+        <td>SAA</td>
+        <td>Voting for best speaker</td>
+        <td>{{saa}}</td>
+      </tr>
+       <tr>
+        <td>5</td>
+        <td>TMOD</td>
+        <td>Theme presentation Part 2</td>
+        <td>{{meeting.tmodName}}</td>
+      </tr>
+    </tbody>
+    </table>
+    </b-row>
+    <b-row>
+    <h4>Section 2: Table topics</h4> 
+    <table class="table table-bordered">
+    <thead>
+      <tr>
+        <th class="col-xs-1">Time in minute</th>
+        <th class="col-xs-2">Role player</th>
+        <th class="col-xs-6">event</th>
+        <th class="col-xs-3">Name of role player</th>
+      </tr>
+    </thead>
+    <tbody>
+      <tr>
+        <td>15</td>
+        <td>TTM</td>
+        <td>Table topics section</td>
+        <td>{{meeting.ttmName}}</td>
+      </tr>
+      <tr>
+        <td>1</td>
+        <td>SAA</td>
+        <td>Voting for best table topic speaker</td>
+        <td>{{saa}}</td>
+      </tr>
+       <tr>
+        <td>5</td>
+        <td>TMOD</td>
+        <td>Theme presentation Part 3</td>
+        <td>{{meeting.tmodName}}</td>
+      </tr>
+    </tbody>
+    </table>
+
+
+    </b-row>
+    <b-row>
+    <h4>Section 3: Evaluations</h4> 
+
+    <table class="table table-bordered">
+    <thead>
+      <tr>
+        <th class="col-xs-1">Time in minute</th>
+        <th class="col-xs-7">event</th>
+        <th class="col-xs-4">Name of role player</th>
+      </tr>
+    </thead>
+    <tbody>
+          <tr v-for="sp in speech">
+            <td>4</td>
+            <td>Evaluation of {{sp.speakerName}} for {{sp.projectName}}</td>
+            <td>{{sp.evaluatorName}}</td>
+          </tr>
+          <tr>
+            <td>4</td>
+            <td>Timer report presentation</td>
+            <td>{{meeting.timerName}}</td>
+          </tr>     
+          <tr>
+            <td>4</td>
+            <td>Ah counter report presentation</td>
+            <td>{{meeting.ahCounterName}}</td>
+          </tr>  
+          <tr>
+            <td>4</td>
+            <td>Grammarian report presentation</td>
+            <td>{{meeting.grammarianName}}</td>
+          </tr>  
+           <tr>
+            <td>4</td>
+            <td>GE report for overall meeting</td>
+            <td>{{meeting.geName}}</td>
+          </tr>  
+           <tr>
+            <td>1</td>
+            <td>Voting for best evaluator, best role player and best supp role player by SAA</td>
+            <td>{{saa}}</td>
+          </tr>  
+           <tr>
+            <td>3</td>
+            <td>Winners announcement and closing remarks by Presiding Officer</td>
+            <td>{{president}}</td>
+          </tr>  
+          <tr>
+            <td>2</td>
+            <td>Request for next meeting roles</td>
+            <td>{{vpe}}</td>
+          </tr> 
+
+
+    </tbody>
+    </table>
+    </b-row>
+
+    </b-container>  
+    </div>
+    <div align="center">
+         <b-button variant="primary" v-on:click="save">Save</b-button>
+    </div>
+    </div>
+</div>
+
+</template>
 <script>
 
     import axios from 'axios'
@@ -83,6 +295,9 @@
     import BootstrapVue from 'bootstrap-vue'
     import 'bootstrap/dist/css/bootstrap.css'
     import 'bootstrap-vue/dist/bootstrap-vue.css'
+    import jsPDF from 'jspdf'
+    import html2canvas from 'html2canvas'
+    window.html2canvas = html2canvas
     Vue.use(VueAxios, axios);
     Vue.use(BootstrapVue);
 
@@ -108,7 +323,11 @@
                 goal_meeting_id:"",
                 searchMeetingNumber:"",
                 speechTableFeilds:['id','meetingId','projectName', 'speakerName','speakerId','evaluatorName','evaluatorId','date','timeMin','timeMax','delete'],
-                goalTableFeilds:['id','userId','userName','projectName','date','meetingId','delete']
+                goalTableFeilds:['id','userId','userName','projectName','date','meetingId','delete'],
+                clubName:"Millenium Gurgaon Toastmasters club",
+                saa:"Shyam Agrawal",
+                president:"Sharad Maheshwari",
+                vpe:"Anubhav Shrivastava"
               }
         },
         methods: {
@@ -160,7 +379,24 @@
                },
             deleteGoal(index){
                 this.goal.splice(index,1);
-            }   
+            } ,
+            save(){
+                 html2canvas(document.getElementById("pdf")).then(function(canvas){
+                        var img =  canvas.toDataURL("image/png",1.0);
+                         var pdf = new jsPDF("l", "pt", "letter");
+                         if(canvas.width > canvas.height){
+                            pdf = new jsPDF('l', 'pt', [canvas.width, canvas.height]);
+                             pdf.addImage(img,'JPEG',20,20, canvas.width, canvas.height);
+                            }
+                            else{
+                            pdf = new jsPDF('p', 'pt', [canvas.height, canvas.width]);
+                             pdf.addImage(img,'JPEG',20,20, canvas.height, canvas.width);
+                            }
+                        
+                         pdf.save('mgtc.pdf');
+                    }
+                 )
+            }  
 
         }
     }
