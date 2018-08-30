@@ -385,12 +385,12 @@
                         var img =  canvas.toDataURL("image/png",1.0);
                         
                          if(canvas.width > canvas.height){
-                             var pdf = new jsPDF('l', 'mm', [canvas.width, canvas.height]);
+                             var pdf = new jsPDF('l', 'mm', [canvas.width+40, canvas.height+40]);
                              pdf.addImage(img,'JPEG',20,20, canvas.width, canvas.height);
                              pdf.save('mgtc.pdf');
                             }
                             else{
-                            var pdf = new jsPDF('p', 'mm', [canvas.height, canvas.width]);
+                            var pdf = new jsPDF('p', 'mm', [canvas.height+40, canvas.width+40]);
                              pdf.addImage(img,'JPEG',20,20, canvas.width, canvas.height);
                              pdf.save('mgtc.pdf');
                             }
