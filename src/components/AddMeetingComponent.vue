@@ -383,17 +383,18 @@
             save(){
                  html2canvas(document.getElementById("pdf")).then(function(canvas){
                         var img =  canvas.toDataURL("image/png",1.0);
-                         var pdf = new jsPDF("l", "pt", "letter");
+                        
                          if(canvas.width > canvas.height){
-                            pdf = new jsPDF('l', 'pt', [canvas.width, canvas.height]);
+                             var pdf = new jsPDF('l', 'mm', [canvas.width, canvas.height]);
                              pdf.addImage(img,'JPEG',20,20, canvas.width, canvas.height);
+                             pdf.save('mgtc.pdf');
                             }
                             else{
-                            pdf = new jsPDF('p', 'pt', [canvas.height, canvas.width]);
-                             pdf.addImage(img,'JPEG',20,20, canvas.height, canvas.width);
+                            var pdf = new jsPDF('p', 'mm', [canvas.height, canvas.width]);
+                             pdf.addImage(img,'JPEG',20,20, canvas.width, canvas.height);
+                             pdf.save('mgtc.pdf');
                             }
-                        
-                         pdf.save('mgtc.pdf');
+                         
                     }
                  )
             }  
