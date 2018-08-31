@@ -158,6 +158,13 @@
                 <td>{{sp.evaluatorName}}</td>
                 <td>{{sp.projectName}}</td>
             </tr>
+            <tr v-for="go in goal">
+                <td>{{go.timeMin}}</td>
+                <td>{{gp.timeMax}}</td>
+                <td>{{go.userName}}</td>
+                <td>{{go.evaluatorName}}</td>
+                <td>{{go.projectName}}</td>
+            </tr>
         </tbody>
     </table>
     <table class="table table-bordered">
