@@ -159,8 +159,8 @@
                 <td>{{sp.projectName}}</td>
             </tr>
             <tr v-for="go in goal">
-                <td>{{go.timeMin}}</td>
-                <td>{{gp.timeMax}}</td>
+                <td></td>
+                <td></td>
                 <td>{{go.userName}}</td>
                 <td>{{go.evaluatorName}}</td>
                 <td>{{go.projectName}}</td>
@@ -347,7 +347,7 @@
                             speech:this.speech
                         }
                     )
-                    .then(response => (this.meetingList = response.data))
+                    .then(response => (alert(response.data.success)))
                     .catch(error => console.log(error))
             },
             addSpeech(){
@@ -378,6 +378,7 @@
                         this.goal = response.data.data.goal;
                         this.speech=response.data.data.speech;
                         this.meeting=response.data.data.meeting;
+                        alert("data fetched");
                     })
                     .catch(error => console.log(error))
             },
