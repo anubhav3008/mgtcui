@@ -9,30 +9,21 @@
     <b-button variant="primary" v-on:click="search">Fetch meeting</b-button>
     </b-form>
     </div>
-
     <b-form inline>
-    <datalist id=  "usersDiv">
-        <option v-for="user in users">
-        {{user}}
-        </option>
-    </datalist>
                 <b-col lg="2">Meeting number</b-col>
                 <b-col lg="4"><b-form-input type="text" v-model="meeting.id" placeholder="meeting number"> </b-form-input></b-col> 
                 <b-col lg="2">TTM name</b-col>
-                <b-col lg="4">
-                <b-form-input type="text" v-model="meeting.ttmName" placeholder="ttm name" list="usersDiv"/> 
-                </b-form-input>
-                </b-col> 
+                <b-col lg="4"><b-form-input type="text" v-model="meeting.ttmName"  placeholder="ttm name"/> </b-form-input></b-col> 
                 <b-col lg="2">Grammarian name</b-col>
-                <b-col lg="4"><b-form-input type="text" v-model="meeting.grammarianName"  placeholder="grammarian name" list="usersDiv"/> </b-form-input></b-col> 
+                <b-col lg="4"><b-form-input type="text" v-model="meeting.grammarianName"  placeholder="grammarian name"/> </b-form-input></b-col> 
                 <b-col lg="2">Ah counter name</b-col>
-                <b-col lg="4"><b-form-input type="text" v-model="meeting.ahCounterName"  placeholder="ah counter name" list="usersDiv"/> </b-form-input></b-col> 
+                <b-col lg="4"><b-form-input type="text" v-model="meeting.ahCounterName"  placeholder="ah counter name"/> </b-form-input></b-col> 
                 <b-col lg="2">TMOD name</b-col>
-                <b-col lg="4"><b-form-input type="text" v-model="meeting.tmodName"  placeholder="tmod name" list="usersDiv"/> </b-form-input></b-col> 
+                <b-col lg="4"><b-form-input type="text" v-model="meeting.tmodName"  placeholder="tmod name"/> </b-form-input></b-col> 
                 <b-col lg="2">Timer name</b-col>
-                <b-col lg="4"><b-form-input type="text" v-model="meeting.timerName" placeholder="timer name" list="usersDiv"/> </b-form-input></b-col> 
+                <b-col lg="4"><b-form-input type="text" v-model="meeting.timerName" placeholder="timer name"/> </b-form-input></b-col> 
                 <b-col lg="2">GE name</b-col>
-                <b-col lg="4"><b-form-input type="text" v-model="meeting.geName" placeholder="GE name" list="usersDiv"/> </b-form-input></b-col> 
+                <b-col lg="4"><b-form-input type="text" v-model="meeting.geName" placeholder="GE name"/> </b-form-input></b-col> 
                 <b-col lg="2">Theme</b-col>
                 <b-col lg="4"><b-form-input type="text" v-model="meeting.theme"  placeholder="theme"/> </b-form-input></b-col> 
     </b-form>
@@ -42,8 +33,10 @@
     <b-form inline>
             
             <b-col lg="3"><b-form-input type="text" v-model="speech_project" placeholder="speech project name"></b-form-input></b-col> 
-            <b-col lg="3"><b-form-input type="text" v-model="speech_speaker_name" placeholder="speech speaker name" list="usersDiv"></b-form-input></b-col> 
-            <b-col lg="3"><b-form-input type="text" v-model="speech_evaluator_name" placeholder="speech evaluator name" list="usersDiv"></b-form-input></b-col> 
+            <b-col lg="3"><b-form-input type="text" v-model="speech_speaker_name" placeholder="speech speaker name"></b-form-input></b-col> 
+            <b-col lg="3"><b-form-input type="text" v-model="speech_speaker_id" placeholder="speech speaker id"></b-form-input></b-col> 
+            <b-col lg="3"><b-form-input type="text" v-model="speech_evaluator_name" placeholder="speech evaluator name"></b-form-input></b-col> 
+            <b-col lg="3"><b-form-input type="text" v-model="speech_evaluator_id" placeholder="speech evaluator id"></b-form-input></b-col> 
             <b-col lg="3"><b-form-input type="date" v-model="speech_date" placeholder="speech date"></b-form-input></b-col> 
             <b-col lg="3"><b-form-input type="text" v-model="speech_time_min" placeholder="min time"></b-form-input></b-col> 
             <b-col lg="3"><b-form-input type="text" v-model="speech_time_max" placeholder="max time"></b-form-input></b-col> 
@@ -63,8 +56,9 @@
     </b-table>
     <hr>
     <b-form inline>
+        <b-col lg="4"><b-form-input type="text" v-model="goal_userId" placeholder="user id"/></b-col>
         <b-col lg="4"><b-form-input type="text" v-model="goal_userName" placeholder="user name"/></b-col>
-        <b-col lg="4"><b-form-input type="text" v-model="goal_projectName" placeholder="project name" list="usersDiv"/></b-col>
+        <b-col lg="4"><b-form-input type="text" v-model="goal_projectName" placeholder="project name"/></b-col>
         <b-col lg="4"><b-form-input type="text" v-model="goal_date" placeholder="date"/></b-col>
         <b-col lg="4"><b-form-input type="text" v-model="goal_meeting_id" placeholder="meeting number"/></b-col>
     </b-form>
@@ -340,9 +334,7 @@
                 clubName:"Millenium Gurgaon Toastmasters club",
                 saa:"Shyam Agrawal",
                 president:"Sharad Maheshwari",
-                vpe:"Anubhav Shrivastava",
-                users:[ 'Ajay Pattanaik','Anjali Bajaj','Anubhav Shrivastava','Aritra Laha','Isha Sharma','Jitesh Pant','Lopamudra Mishra','Mohit Mendiratta','Mohit Dwivedi','Parul Bansal','Rajan Wadhwa','Rakhi Aswal','Sahil Sharma','Sanjeev Pathak','Sarika Kokadwar','Sharad Maheshwari','Shveta Gupta','Shyam Agrawal','Smita Narayan','Sundeep Rana','Vivek Sharma']
-                
+                vpe:"Anubhav Shrivastava"
               }
         },
         methods: {
@@ -413,8 +405,7 @@
                          
                     }
                  )
-            }
-
+            }  
 
         }
     }
