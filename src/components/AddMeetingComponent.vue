@@ -35,6 +35,10 @@
                 <b-col lg="4"><b-form-input type="text" v-model="meeting.geName" placeholder="GE name" list="usersDiv"/> </b-form-input></b-col> 
                 <b-col lg="2">Theme</b-col>
                 <b-col lg="4"><b-form-input type="text" v-model="meeting.theme"  placeholder="theme"/> </b-form-input></b-col> 
+                <b-col lg="2">Date</b-col>
+                <b-col lg="4"><b-form-input type="date" v-model="meeting.date"  placeholder="date"/> </b-form-input></b-col> 
+                 <b-col lg="2">Time</b-col>
+                <b-col lg="4"><b-form-input type="time" v-model="meeting.time"  placeholder="time"/> </b-form-input></b-col> 
     </b-form>
 
     <br>
@@ -92,8 +96,9 @@
                     <h4>{{clubName}}</h4>
                         <h5>
                 Meeting # {{meeting.id}}<br>
-                Date and Time  :  {{meeting.timing}}<br>
-                Venue:  {{meeting.venue}}<br>
+                Date  :  {{meeting.date}}<br>
+                Time  : {{meeting.time}}<br>
+                Venue:  {{venue}}<br>
                 Meeting Theme : {{meeting.theme}}
                         </h5>
                   </div>
@@ -341,7 +346,9 @@
                 saa:"Shyam Agrawal",
                 president:"Sharad Maheshwari",
                 vpe:"Anubhav Shrivastava",
-                users:[ 'Ajay Pattanaik','Anjali Bajaj','Anubhav Shrivastava','Aritra Laha','Isha Sharma','Jitesh Pant','Lopamudra Mishra','Mohit Mendiratta','Mohit Dwivedi','Parul Bansal','Rajan Wadhwa','Rakhi Aswal','Sahil Sharma','Sanjeev Pathak','Sarika Kokadwar','Sharad Maheshwari','Shveta Gupta','Shyam Agrawal','Smita Narayan','Sundeep Rana','Vivek Sharma']
+                users:[ 'Ajay Pattanaik','Anjali Bajaj','Anubhav Shrivastava','Aritra Laha','Isha Sharma','Jitesh Pant','Lopamudra Mishra','Mohit Mendiratta','Mohit Dwivedi','Parul Bansal','Rajan Wadhwa','Rakhi Aswal','Sahil Sharma','Sanjeev Pathak','Sarika Kokadwar','Sharad Maheshwari','Shveta Gupta','Shyam Agrawal','Smita Narayan','Sundeep Rana','Vivek Sharma'],
+                venue: 'PALLAVANJALI SCHOOL, 71, SHANTI STREET, BLOCK S, UPPAL SOUTHEND, SECTOR 49, GURUGRAM',
+                time: '5 PM to 7 PM'
                 
               }
         },
