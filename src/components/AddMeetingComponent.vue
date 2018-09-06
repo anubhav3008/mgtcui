@@ -91,21 +91,26 @@
     <div id="pdf">
         <b-container fluid>
         <b-row>
+        <b-col cols="4" sm="2">
+        <b-img-lazy center  src="/logo.png" fluid alt="Responsive image" />
+        </b-col>
             <b-col>
                 <div align="center">
-                    <h4>{{clubName}}</h4>
+                    <h3><b>{{clubName}}</b></h3>
                         <h5>
                 Meeting # {{meeting.id}}<br>
                 Date  :  {{meeting.date}}<br>
                 Time  : {{meeting.time}}<br>
                 Venue:  {{venue}}<br>
-                Meeting Theme : {{meeting.theme}}
-                        </h5>
+                </h5> <h3>
+                Meeting Theme :<b> {{meeting.theme}}</b>
+                </h3>
+                        
                   </div>
             </b-col>
         </b-row>
         <b-row>
-       <h4>Introduction Section</h4>   
+       <h4><b>Introduction Section</b></h4>   
         <table class="table table-bordered">
     <thead>
       <tr>
@@ -150,8 +155,9 @@
     </table>
     </b-row>
     <b-row>
-    <h4>Section 1: Prepared Speeches</h4> 
-    <table class="table table-bordered">
+    <h4><b>Prepared Speeches Section</b></h4> 
+
+    <table class="table table-bordered" v-if="speech.length>0">
         <thead>
         <tr>
             <th class="col-xs-1">Min time in minute</th>
@@ -188,7 +194,7 @@
       </tr>
     </thead>
     <tbody>
-     <tr>
+     <tr v-if="speech.length>0">
         <td>1</td>
         <td>SAA</td>
         <td>Voting for best speaker</td>
@@ -204,7 +210,7 @@
     </table>
     </b-row>
     <b-row>
-    <h4>Section 2: Table topics</h4> 
+    <h4><b>Table topics Section</b></h4> 
     <table class="table table-bordered">
     <thead>
       <tr>
@@ -239,7 +245,7 @@
 
     </b-row>
     <b-row>
-    <h4>Section 3: Evaluations</h4> 
+    <h4><b>Evaluations Section</b></h4> 
 
     <table class="table table-bordered">
     <thead>
@@ -404,18 +410,19 @@
                 this.goal.splice(index,1);
             } ,
             save(){
-                 html2canvas(document.getElementById("pdf")).then(function(canvas){
+                var fileName= 'mgtc_'+this.meeting.id+'meeting_Agenda.pdf';
+                html2canvas(document.getElementById("pdf")).then(function(canvas){
                         var img =  canvas.toDataURL("image/png",1.0);
                         
                          if(canvas.width > canvas.height){
                              var pdf = new jsPDF('l', 'mm', [canvas.width+40, canvas.height+40]);
                              pdf.addImage(img,'JPEG',20,20, canvas.width, canvas.height);
-                             pdf.save('mgtc.pdf');
+                             pdf.save(fileName);
                             }
                             else{
                             var pdf = new jsPDF('p', 'mm', [canvas.height+40, canvas.width+40]);
                              pdf.addImage(img,'JPEG',20,20, canvas.width, canvas.height);
-                             pdf.save('mgtc.pdf');
+                             pdf.save(fileName);
                             }
                          
                     }

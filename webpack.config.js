@@ -50,6 +50,16 @@ module.exports.plugins= (module.exports.plugins || []).concat([
   ])
 
   ]);
+module.exports.plugins= (module.exports.plugins || []).concat([
+ new CopyWebpackPlugin([
+    {
+      from: 'logo.png',
+      to: 'logo.png',
+      toType: 'file'
+    },
+  ])
+
+  ]);
 if (process.env.NODE_ENV === 'production') {
   module.exports.devtool = '#source-map'
   // http://vue-loader.vuejs.org/en/workflow/production.html
