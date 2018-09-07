@@ -110,7 +110,8 @@
             </b-col>
         </b-row>
         <b-row>
-       <h4><b>Introduction Section</b></h4>   
+       <h4><b>Introduction Section ({{meeting.time}} - {{introductionSectionEndTime}}) </b><br> </h4>
+       
         <table class="table table-bordered">
     <thead>
       <tr>
@@ -155,7 +156,7 @@
     </table>
     </b-row>
     <b-row>
-    <h4><b>Prepared Speeches Section</b></h4> 
+    <h4><b>Prepared Speeches Section ({{introductionSectionEndTime}}-{{PreparedSpeechEndTime}} )</b></h4> 
 
     <table class="table table-bordered" v-if="speech.length>0">
         <thead>
@@ -210,7 +211,7 @@
     </table>
     </b-row>
     <b-row>
-    <h4><b>Table topics Section</b></h4> 
+    <h4><b>Table topics Section ({{PreparedSpeechEndTime}} - {{tableTopicsEndTime}})</b></h4> 
     <table class="table table-bordered">
     <thead>
       <tr>
@@ -245,7 +246,7 @@
 
     </b-row>
     <b-row>
-    <h4><b>Evaluations Section</b></h4> 
+    <h4><b>Evaluations Section ({{tableTopicsEndTime}}-{{evaluationEndTime}})</b></h4> 
 
     <table class="table table-bordered">
     <thead>
@@ -358,6 +359,32 @@
                 
               }
         },
+        computed : {
+            introductionSectionEndTime :  function(){
+                return addTime(this.meeting.time, 13 )
+            },
+            PreparedSpeechEndTime :  function(){
+                var sum=0;
+                for(var i=0;i<this.speech.length;i++){
+                    sum=parseInt(sum) + parseInt(this.speech[i].timeMax)+parseInt(1);
+                }
+                var totalTime= parseInt(sum) + parseInt(6); 
+                return addTime(this.introductionSectionEndTime, totalTime); 
+            },
+            tableTopicsEndTime :  function(){
+                return addTime(this.PreparedSpeechEndTime, 21);
+            },
+            evaluationEndTime : function(){
+                var sum=0;
+                for(var i=0;i<this.speech.length;i++){
+                    sum=parseInt(sum) + parseInt(4);
+                }
+                var total = parseInt(sum)+ parseInt(22);
+                return addTime(this.tableTopicsEndTime, total);
+            }
+
+
+        },
         methods: {
             addOrUpdate(){
                 axios
@@ -432,4 +459,19 @@
 
         }
     }
+     function    addTime(time,  minuteToAdd){
+                var timeArray=time.split(':');
+                   var hh= timeArray[0];
+                   var mm= timeArray[1];
+                   mm=parseInt(minuteToAdd)+parseInt(mm,10);
+                   if(parseInt(mm,10)>=60){
+                    mm=parseInt(mm,10) -60;
+                    hh=parseInt(hh,10) +1;
+                   }
+                   if(parseInt(hh,10)>=24){
+                    hh=parseInt(hh,10)-24;
+                   }
+                   var rs= hh+":"+mm;
+                   return rs;
+            }
 </script>
