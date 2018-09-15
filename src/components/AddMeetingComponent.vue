@@ -357,11 +357,16 @@
                 venue: 'PALLAVANJALI SCHOOL, 71, SHANTI STREET, BLOCK S, UPPAL SOUTHEND, SECTOR 49, GURUGRAM',
                 time: '5 PM to 7 PM'
                 
+                
               }
         },
         computed : {
             introductionSectionEndTime :  function(){
-                return addTime(this.meeting.time, 13 )
+                if(this.meeting.time)
+                    return addTime(this.meeting.time, 13 )
+                 else
+                     return addTime('00:00', 13 )   
+              
             },
             PreparedSpeechEndTime :  function(){
                 var sum=0;
