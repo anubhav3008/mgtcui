@@ -36,7 +36,7 @@
         methods: {
             getContribution(){
       axios
-      .get('http://localhost:8090/mgtc/users/contribution/byName/'+this.name)
+      .get('https://mgtc.herokuapp.com/users/contribution/byName/'+this.name)
       .then(response => {
       		alert('search complete');
       		this.contributionList = response.data;

@@ -4,6 +4,7 @@
       <b-nav-item><v-link href="/meetings">Meeting</v-link></b-nav-item>
       <b-nav-item><v-link href="/search">Search</v-link></b-nav-item>
       <b-nav-item><v-link href="/contribution">Contribution</v-link></b-nav-item>
+      <b-nav-item><v-link href="/leaderBoard">LeaderBoard</v-link></b-nav-item>
   </b-nav>
   <slot></slot>
 </div>
