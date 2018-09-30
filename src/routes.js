@@ -1,5 +1,6 @@
 export default {
   '/': 'Meetings',
   '/meetings':'Meetings',
-  '/search':'Search'
+  '/search':'Search',
+  '/contribution':'Contribution'
 }
