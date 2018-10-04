@@ -350,11 +350,11 @@
                 speechTableFeilds:['id','meetingId','projectName', 'speakerName','speakerId','evaluatorName','evaluatorId','date','timeMin','timeMax','delete'],
                 goalTableFeilds:['id','userId','userName','projectName','date','meetingId','delete'],
                 clubName:"Millenium Gurgaon Toastmasters club",
-                saa:"Shyam Agrawal",
+                saa:"Ajay Pattanaik",
                 president:"Sharad Maheshwari",
                 vpe:"Anubhav Shrivastava",
-                users:[ 'Ajay Pattanaik','Anjali Bajaj','Anubhav Shrivastava','Aritra Laha','Isha Sharma','Jitesh Pant','Lopamudra Mishra','Mohit Mendiratta','Mohit Dwivedi','Parul Bansal','Rajan Wadhwa','Rakhi Aswal','Sahil Sharma','Sanjeev Pathak','Sarika Kokadwar','Sharad Maheshwari','Shveta Gupta','Shyam Agrawal','Smita Narayan','Sundeep Rana','Vivek Sharma'],
-                venue: 'PALLAVANJALI SCHOOL, 71, SHANTI STREET, BLOCK S, UPPAL SOUTHEND, SECTOR 49, GURUGRAM',
+                users:['Ajay Pattanaik','Anjali Bajaj','Anubhav Shrivastava','Rakhi Aswal','Sanjeev Pathak','Sarika Kokadwar','Sharad Maheshwari','Shveta Gupta','Smita Narayan','Vivek Sharma'],
+                venue: 'Pallavanjali School, Shanti St, Block S, Uppal Southend, Sector 49, Gurugram, Haryana 122018',
                 time: '5 PM to 7 PM'
                 
                 

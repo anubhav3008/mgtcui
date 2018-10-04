@@ -29,7 +29,7 @@
             return{
             name:"",
                 contributionList:"",
-                 users:[ 'Ajay Pattanaik','Anjali Bajaj','Anubhav Shrivastava','Aritra Laha','Isha Sharma','Jitesh Pant','Lopamudra Mishra','Mohit Mendiratta','Mohit Dwivedi','Parul Bansal','Rajan Wadhwa','Rakhi Aswal','Sahil Sharma','Sanjeev Pathak','Sarika Kokadwar','Sharad Maheshwari','Shveta Gupta','Shyam Agrawal','Smita Narayan','Sundeep Rana','Vivek Sharma']
+                 users:[ 'Ajay Pattanaik','Anjali Bajaj','Anubhav Shrivastava','Rakhi Aswal','Sanjeev Pathak','Sarika Kokadwar','Sharad Maheshwari','Shveta Gupta','Smita Narayan','Vivek Sharma']
                 
               }
         },
