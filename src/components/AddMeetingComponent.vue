@@ -12,27 +12,26 @@
 
     <b-form inline>
     <datalist id=  "usersDiv">
-        <option v-for="user in users">
-        {{user}}
+        <option v-for="user in users" v-bind:value="user.name"  v-bind:label="user.name">
         </option>
     </datalist>
                 <b-col lg="2">Meeting number</b-col>
                 <b-col lg="4"><b-form-input type="text" v-model="meeting.id" placeholder="meeting number"> </b-form-input></b-col> 
                 <b-col lg="2">TTM name</b-col>
                 <b-col lg="4">
-                <b-form-input type="text" v-model="meeting.ttmName" placeholder="ttm name" list="usersDiv"/> 
+                <b-form-input type="text" v-model="meeting.ttmName" placeholder="ttm name" list="usersDiv" v-on:change="getUsers"/> 
                 </b-form-input>
                 </b-col> 
                 <b-col lg="2">Grammarian name</b-col>
-                <b-col lg="4"><b-form-input type="text" v-model="meeting.grammarianName"  placeholder="grammarian name" list="usersDiv"/> </b-form-input></b-col> 
+                <b-col lg="4"><b-form-input type="text" v-model="meeting.grammarianName"  placeholder="grammarian name" list="usersDiv" v-on:change="getUsers"/> </b-form-input></b-col> 
                 <b-col lg="2">Ah counter name</b-col>
-                <b-col lg="4"><b-form-input type="text" v-model="meeting.ahCounterName"  placeholder="ah counter name" list="usersDiv"/> </b-form-input></b-col> 
+                <b-col lg="4"><b-form-input type="text" v-model="meeting.ahCounterName"  placeholder="ah counter name" list="usersDiv" v-on:change="getUsers"/> </b-form-input></b-col> 
                 <b-col lg="2">TMOD name</b-col>
-                <b-col lg="4"><b-form-input type="text" v-model="meeting.tmodName"  placeholder="tmod name" list="usersDiv"/> </b-form-input></b-col> 
+                <b-col lg="4"><b-form-input type="text" v-model="meeting.tmodName"  placeholder="tmod name" list="usersDiv" v-on:change="getUsers"/> </b-form-input></b-col> 
                 <b-col lg="2">Timer name</b-col>
-                <b-col lg="4"><b-form-input type="text" v-model="meeting.timerName" placeholder="timer name" list="usersDiv"/> </b-form-input></b-col> 
+                <b-col lg="4"><b-form-input type="text" v-model="meeting.timerName" placeholder="timer name" list="usersDiv" v-on:change="getUsers"/> </b-form-input></b-col> 
                 <b-col lg="2">GE name</b-col>
-                <b-col lg="4"><b-form-input type="text" v-model="meeting.geName" placeholder="GE name" list="usersDiv"/> </b-form-input></b-col> 
+                <b-col lg="4"><b-form-input type="text" v-model="meeting.geName" placeholder="GE name" list="usersDiv"  v-on:change="getUsers"/> </b-form-input></b-col> 
                 <b-col lg="2">Theme</b-col>
                 <b-col lg="4"><b-form-input type="text" v-model="meeting.theme"  placeholder="theme"/> </b-form-input></b-col> 
                 <b-col lg="2">Date</b-col>
@@ -46,8 +45,8 @@
     <b-form inline>
             
             <b-col lg="3"><b-form-input type="text" v-model="speech_project" placeholder="speech project name"></b-form-input></b-col> 
-            <b-col lg="3"><b-form-input type="text" v-model="speech_speaker_name" placeholder="speech speaker name" list="usersDiv"></b-form-input></b-col> 
-            <b-col lg="3"><b-form-input type="text" v-model="speech_evaluator_name" placeholder="speech evaluator name" list="usersDiv"></b-form-input></b-col> 
+            <b-col lg="3"><b-form-input type="text" v-model="speech_speaker_name" placeholder="speech speaker name" list="usersDiv" v-on:change="getUsers"></b-form-input></b-col> 
+            <b-col lg="3"><b-form-input type="text" v-model="speech_evaluator_name" placeholder="speech evaluator name" list="usersDiv" v-on:change="getUsers"></b-form-input></b-col> 
             <b-col lg="3"><b-form-input type="date" v-model="speech_date" placeholder="speech date"></b-form-input></b-col> 
             <b-col lg="3"><b-form-input type="text" v-model="speech_time_min" placeholder="min time"></b-form-input></b-col> 
             <b-col lg="3"><b-form-input type="text" v-model="speech_time_max" placeholder="max time"></b-form-input></b-col> 
@@ -65,22 +64,7 @@
         </template>
 
     </b-table>
-    <hr>
-    <b-form inline>
-        <b-col lg="4"><b-form-input type="text" v-model="goal_userName" placeholder="user name"/></b-col>
-        <b-col lg="4"><b-form-input type="text" v-model="goal_projectName" placeholder="project name" list="usersDiv"/></b-col>
-        <b-col lg="4"><b-form-input type="text" v-model="goal_date" placeholder="date"/></b-col>
-        <b-col lg="4"><b-form-input type="text" v-model="goal_meeting_id" placeholder="meeting number"/></b-col>
-    </b-form>
-     <div align="center">
-         <b-button variant="primary" v-on:click="addGoal">Add Goal</b-button>
-    </div>
-    <b-table striped hover small responsive=true stacked="md" :items="goal" :fields="goalTableFeilds" v-if="goal.length>0">
-     <template slot="delete" slot-scope="row">
-            <b-button size="sm" @click.stop="deleteGoal(row.index)">Delete</b-button>
-    </template>
-    </b-table>
-
+    
     <br>
      <div align="center">
          <b-button variant="primary" v-on:click="addOrUpdate">Add/update Meeting</b-button>
@@ -353,7 +337,8 @@
                 saa:"Ajay Pattanaik",
                 president:"Sharad Maheshwari",
                 vpe:"Anubhav Shrivastava",
-                users:['Ajay Pattanaik','Anjali Bajaj','Anubhav Shrivastava','Rakhi Aswal','Sanjeev Pathak','Sarika Kokadwar','Sharad Maheshwari','Shveta Gupta','Smita Narayan','Vivek Sharma'],
+                users:[],
+                userFetched:false,
                 venue: 'Pallavanjali School, Shanti St, Block S, Uppal Southend, Sector 49, Gurugram, Haryana 122018',
                 time: '5 PM to 7 PM'
                 
@@ -390,7 +375,20 @@
 
 
         },
+        created:function () {
+         this.getUsers();
+        },
         methods: {
+            getUsers(){
+              if(this.userFetched){
+               return;
+              }
+              axios.get('https://mgtc.herokuapp.com/users')
+              .then(response => {
+                this.users = response.data.data;
+                this.userFetched=true;
+              })
+            },
             addOrUpdate(){
                 axios
                     .post('https://mgtc.herokuapp.com/meetings/addOrUpdate',

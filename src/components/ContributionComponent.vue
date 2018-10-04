@@ -1,13 +1,12 @@
 <template>
     <div>
     <datalist id=  "usersDiv">
-        <option v-for="user in users">
-        {{user}}
+        <option v-for="user in users" v-bind:value="user.name"  v-bind:label="user.name">
         </option>
     </datalist>
 
  <b-form inline>
-    <b-form-input type="text" placeholder="Name" v-model="name" list="usersDiv"/>
+    <b-form-input type="text" placeholder="Name" v-model="name" list="usersDiv"  v-on:change="getUsers"/>
     <b-button variant="primary" v-on:click="getContribution">search</b-button>
     </b-form>
 	
@@ -29,7 +28,8 @@
             return{
             name:"",
                 contributionList:"",
-                 users:[ 'Ajay Pattanaik','Anjali Bajaj','Anubhav Shrivastava','Rakhi Aswal','Sanjeev Pathak','Sarika Kokadwar','Sharad Maheshwari','Shveta Gupta','Smita Narayan','Vivek Sharma']
+                 users:[],
+                 userFetched:false
                 
               }
         },
@@ -42,7 +42,20 @@
       		this.contributionList = response.data;
       		})
       .catch(error => console.log(error))
+            },
+            getUsers(){
+              if(this.userFetched){
+               return;
+              }
+              axios.get('https://mgtc.herokuapp.com/users')
+              .then(response => {
+                this.users = response.data.data;
+                this.userFetched=true;
+              })
             }
+        },
+        created:function () {
+         this.getUsers();
         }
     }
 </script>
