@@ -1,6 +1,6 @@
 <template>
     <div>
-    <b-table striped hover small responsive=true stacked="md" :items="meetingList.data"></b-table>
+    <b-table striped hover small responsive=true stacked="sm" :items="meetingList.data" :fields="meetingFeilds"></b-table>
     </div>
 </template>
 
@@ -15,6 +15,7 @@
         data(){
             return{
                 meetingList:"",
+                 meetingFeilds:['id','date','ttmName', 'grammarianName','ahCounterName','tmodName','timerName','theme']
               }
         },
         methods: {
