@@ -15,6 +15,11 @@
         <option v-for="user in users" v-bind:value="user.name"  v-bind:label="user.name">
         </option>
     </datalist>
+
+    <datalist id="autosuggestionDiv">
+        <option v-for="auto in autosuggestion" v-bind:value="auto"  v-bind:label="auto">
+        </option>
+    </datalist>
                 <b-col lg="2">Meeting number</b-col>
                 <b-col lg="4"><b-form-input type="text" v-model="meeting.id" placeholder="meeting number"> </b-form-input></b-col> 
                 <b-col lg="2">TTM name</b-col>
@@ -38,6 +43,11 @@
                 <b-col lg="4"><b-form-input type="date" v-model="meeting.date"  placeholder="date"/> </b-form-input></b-col> 
                  <b-col lg="2">Time</b-col>
                 <b-col lg="4"><b-form-input type="time" v-model="meeting.time"  placeholder="time"/> </b-form-input></b-col> 
+                <b-col lg="2">Club name</b-col>
+                <b-col lg="4"><b-form-input type="text" v-model="meeting.clubName" placeholder="Club name" list="autosuggestionDiv"  v-on:change="getAutosuggestion"/> </b-form-input></b-col>
+
+                <b-col lg="2">Venue</b-col>
+                <b-col lg="4"><b-form-input type="text" v-model="meeting.venue" placeholder="Venue" list="autosuggestionDiv"  v-on:change="getAutosuggestion"/> </b-form-input></b-col> 
     </b-form>
 
     <br>
@@ -115,16 +125,10 @@
                 searchMeetingNumber:"",
                 speechTableFeilds:['id','meetingId','projectName', 'speakerName','speakerId','evaluatorName','evaluatorId','date','timeMin','timeMax','delete'],
                 goalTableFeilds:['id','userId','userName','projectName','date','meetingId','delete'],
-                clubName:"Millenium Gurgaon Toastmasters club",
-                saa:"Ajay Pattanaik",
-                president:"Sharad Maheshwari",
-                vpe:"Anubhav Shrivastava",
                 users:[],
                 userFetched:false,
-                venue: 'Pallavanjali School, Shanti St, Block S, Uppal Southend, Sector 49, Gurugram, Haryana 122018',
-                time: '5 PM to 7 PM'
-                
-                
+                autosuggestion:[],
+                autosuggestionFetched:false
               }
         },
         computed : {
@@ -158,9 +162,20 @@
 
         },
         created:function () {
+        this.getAutosuggestion();
          this.getUsers();
         },
         methods: {
+        getAutosuggestion(){
+            if(this.autosuggestionFetched){
+            return;
+            }
+            axios.get('https://mgtc.herokuapp.com/autosuggest/static')
+              .then(response => {
+                this.autosuggestion = response.data.data;
+                this.autosuggestionFetched=true;
+              })
+            },
             getUsers(){
               if(this.userFetched){
                return;
