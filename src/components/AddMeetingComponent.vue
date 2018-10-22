@@ -35,8 +35,23 @@
                 <b-col lg="4"><b-form-input type="text" v-model="meeting.tmodName"  placeholder="tmod name" list="usersDiv" v-on:change="getUsers"/> </b-form-input></b-col> 
                 <b-col lg="2">Timer name</b-col>
                 <b-col lg="4"><b-form-input type="text" v-model="meeting.timerName" placeholder="timer name" list="usersDiv" v-on:change="getUsers"/> </b-form-input></b-col> 
+                
                 <b-col lg="2">GE name</b-col>
                 <b-col lg="4"><b-form-input type="text" v-model="meeting.geName" placeholder="GE name" list="usersDiv"  v-on:change="getUsers"/> </b-form-input></b-col> 
+                
+
+                <b-col lg="2">SAA</b-col>
+                <b-col lg="4"><b-form-input type="text" v-model="meeting.saaName" placeholder="SAA" list="usersDiv"  v-on:change="getUsers"/> 
+                </b-form-input></b-col> 
+                
+
+                <b-col lg="2">VP Education</b-col>
+                <b-col lg="4"><b-form-input type="text" v-model="meeting.vpeName" placeholder="VP Education" list="usersDiv"  v-on:change="getUsers"/> </b-form-input></b-col> 
+                
+                <b-col lg="2">President</b-col>
+                <b-col lg="4"><b-form-input type="text" v-model="meeting.presidentName" placeholder="VP Education" list="usersDiv"  v-on:change="getUsers"/> </b-form-input></b-col> 
+
+
                 <b-col lg="2">Theme</b-col>
                 <b-col lg="4"><b-form-input type="text" v-model="meeting.theme"  placeholder="theme"/> </b-form-input></b-col> 
                 <b-col lg="2">Date</b-col>
@@ -45,7 +60,6 @@
                 <b-col lg="4"><b-form-input type="time" v-model="meeting.time"  placeholder="time"/> </b-form-input></b-col> 
                 <b-col lg="2">Club name</b-col>
                 <b-col lg="4"><b-form-input type="text" v-model="meeting.clubName" placeholder="Club name" list="autosuggestionDiv"  v-on:change="getAutosuggestion"/> </b-form-input></b-col>
-
                 <b-col lg="2">Venue</b-col>
                 <b-col lg="4"><b-form-input type="text" v-model="meeting.venue" placeholder="Venue" list="autosuggestionDiv"  v-on:change="getAutosuggestion"/> </b-form-input></b-col> 
     </b-form>
