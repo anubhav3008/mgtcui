@@ -24,44 +24,44 @@
                 <b-col lg="4"><b-form-input type="text" v-model="meeting.id" placeholder="meeting number"> </b-form-input></b-col> 
                 <b-col lg="2">TTM name</b-col>
                 <b-col lg="4">
-                <b-form-input type="text" v-model="meeting.ttmName" placeholder="ttm name" list="usersDiv" v-on:change="getUsers"/> 
+                <b-form-input type="text" v-model="meeting.ttmName" placeholder="ttm name" list="usersDiv" v-on:change="getUsers">
                 </b-form-input>
                 </b-col> 
                 <b-col lg="2">Grammarian name</b-col>
-                <b-col lg="4"><b-form-input type="text" v-model="meeting.grammarianName"  placeholder="grammarian name" list="usersDiv" v-on:change="getUsers"/> </b-form-input></b-col> 
+                <b-col lg="4"><b-form-input type="text" v-model="meeting.grammarianName"  placeholder="grammarian name" list="usersDiv" v-on:change="getUsers"> </b-form-input></b-col>
                 <b-col lg="2">Ah counter name</b-col>
-                <b-col lg="4"><b-form-input type="text" v-model="meeting.ahCounterName"  placeholder="ah counter name" list="usersDiv" v-on:change="getUsers"/> </b-form-input></b-col> 
+                <b-col lg="4"><b-form-input type="text" v-model="meeting.ahCounterName"  placeholder="ah counter name" list="usersDiv" v-on:change="getUsers"> </b-form-input></b-col>
                 <b-col lg="2">TMOD name</b-col>
-                <b-col lg="4"><b-form-input type="text" v-model="meeting.tmodName"  placeholder="tmod name" list="usersDiv" v-on:change="getUsers"/> </b-form-input></b-col> 
+                <b-col lg="4"><b-form-input type="text" v-model="meeting.tmodName"  placeholder="tmod name" list="usersDiv" v-on:change="getUsers"> </b-form-input></b-col>
                 <b-col lg="2">Timer name</b-col>
-                <b-col lg="4"><b-form-input type="text" v-model="meeting.timerName" placeholder="timer name" list="usersDiv" v-on:change="getUsers"/> </b-form-input></b-col> 
+                <b-col lg="4"><b-form-input type="text" v-model="meeting.timerName" placeholder="timer name" list="usersDiv" v-on:change="getUsers"> </b-form-input></b-col>
                 
                 <b-col lg="2">GE name</b-col>
-                <b-col lg="4"><b-form-input type="text" v-model="meeting.geName" placeholder="GE name" list="usersDiv"  v-on:change="getUsers"/> </b-form-input></b-col> 
+                <b-col lg="4"><b-form-input type="text" v-model="meeting.geName" placeholder="GE name" list="usersDiv"  v-on:change="getUsers"> </b-form-input></b-col>
                 
 
                 <b-col lg="2">SAA</b-col>
-                <b-col lg="4"><b-form-input type="text" v-model="meeting.saaName" placeholder="SAA" list="usersDiv"  v-on:change="getUsers"/> 
+                <b-col lg="4"><b-form-input type="text" v-model="meeting.saaName" placeholder="SAA" list="usersDiv"  v-on:change="getUsers">
                 </b-form-input></b-col> 
                 
 
                 <b-col lg="2">VP Education</b-col>
-                <b-col lg="4"><b-form-input type="text" v-model="meeting.vpeName" placeholder="VP Education" list="usersDiv"  v-on:change="getUsers"/> </b-form-input></b-col> 
+                <b-col lg="4"><b-form-input type="text" v-model="meeting.vpeName" placeholder="VP Education" list="usersDiv"  v-on:change="getUsers"> </b-form-input></b-col>
                 
                 <b-col lg="2">President</b-col>
-                <b-col lg="4"><b-form-input type="text" v-model="meeting.presidentName" placeholder="VP Education" list="usersDiv"  v-on:change="getUsers"/> </b-form-input></b-col> 
+                <b-col lg="4"><b-form-input type="text" v-model="meeting.presidentName" placeholder="VP Education" list="usersDiv"  v-on:change="getUsers"> </b-form-input></b-col>
 
 
                 <b-col lg="2">Theme</b-col>
-                <b-col lg="4"><b-form-input type="text" v-model="meeting.theme"  placeholder="theme"/> </b-form-input></b-col> 
+                <b-col lg="4"><b-form-input type="text" v-model="meeting.theme"  placeholder="theme"> </b-form-input></b-col>
                 <b-col lg="2">Date</b-col>
-                <b-col lg="4"><b-form-input type="date" v-model="meeting.date"  placeholder="date"/> </b-form-input></b-col> 
+                <b-col lg="4"><b-form-input type="date" v-model="meeting.date"  placeholder="date"> </b-form-input></b-col>
                  <b-col lg="2">Time</b-col>
-                <b-col lg="4"><b-form-input type="time" v-model="meeting.time"  placeholder="time"/> </b-form-input></b-col> 
+                <b-col lg="4"><b-form-input type="time" v-model="meeting.time"  placeholder="time"> </b-form-input></b-col>
                 <b-col lg="2">Club name</b-col>
-                <b-col lg="4"><b-form-input type="text" v-model="meeting.clubName" placeholder="Club name" list="autosuggestionDiv"  v-on:change="getAutosuggestion"/> </b-form-input></b-col>
+                <b-col lg="4"><b-form-input type="text" v-model="meeting.clubName" placeholder="Club name" list="autosuggestionDiv"  v-on:change="getAutosuggestion"> </b-form-input></b-col>
                 <b-col lg="2">Venue</b-col>
-                <b-col lg="4"><b-form-input type="text" v-model="meeting.venue" placeholder="Venue" list="autosuggestionDiv"  v-on:change="getAutosuggestion"/> </b-form-input></b-col> 
+                <b-col lg="4"><b-form-input type="text" v-model="meeting.venue" placeholder="Venue" list="autosuggestionDiv"  v-on:change="getAutosuggestion"> </b-form-input></b-col>
     </b-form>
 
     <br>
@@ -145,36 +145,6 @@
                 autosuggestionFetched:false
               }
         },
-        computed : {
-            introductionSectionEndTime :  function(){
-                if(this.meeting.time)
-                    return addTime(this.meeting.time, 13 )
-                 else
-                     return addTime('00:00', 13 )   
-              
-            },
-            PreparedSpeechEndTime :  function(){
-                var sum=0;
-                for(var i=0;i<this.speech.length;i++){
-                    sum=parseInt(sum) + parseInt(this.speech[i].timeMax)+parseInt(1);
-                }
-                var totalTime= parseInt(sum) + parseInt(6); 
-                return addTime(this.introductionSectionEndTime, totalTime); 
-            },
-            tableTopicsEndTime :  function(){
-                return addTime(this.PreparedSpeechEndTime, 21);
-            },
-            evaluationEndTime : function(){
-                var sum=0;
-                for(var i=0;i<this.speech.length;i++){
-                    sum=parseInt(sum) + parseInt(4);
-                }
-                var total = parseInt(sum)+ parseInt(22);
-                return addTime(this.tableTopicsEndTime, total);
-            }
-
-
-        },
         created:function () {
         this.getAutosuggestion();
          this.getUsers();
@@ -251,23 +221,16 @@
                 this.goal.splice(index,1);
             } ,
             save(){
-                window.location.href='http://mgtc.herokuapp.com/communication/agenda/'+this.searchMeetingNumber;
+                if(this.meeting.id !=null){
+                    window.location.href = 'http://mgtc.herokuapp.com/communication/agenda/' + this.meeting.id;
+                }
+                else if(this.searchMeetingNumber !=null) {
+                    window.location.href = 'http://mgtc.herokuapp.com/communication/agenda/' + this.searchMeetingNumber;
+                }
+                else {
+                    alert("Meeting id not found, please refresh and try again!")
+                }
             }
         }
     }
-     function    addTime(time,  minuteToAdd){
-                var timeArray=time.split(':');
-                   var hh= timeArray[0];
-                   var mm= timeArray[1];
-                   mm=parseInt(minuteToAdd)+parseInt(mm,10);
-                   if(parseInt(mm,10)>=60){
-                    mm=parseInt(mm,10) -60;
-                    hh=parseInt(hh,10) +1;
-                   }
-                   if(parseInt(hh,10)>=24){
-                    hh=parseInt(hh,10)-24;
-                   }
-                   var rs= hh+":"+mm;
-                   return rs;
-            }
 </script>
