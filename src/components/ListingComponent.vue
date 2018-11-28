@@ -15,7 +15,7 @@
         data(){
             return{
                 meetingList:"",
-                 meetingFeilds:['id','date','ttmName', 'grammarianName','ahCounterName','tmodName','timerName','theme']
+                 meetingFeilds:['id','date','tmodName','theme','ttmName','grammarianName','ahCounterName','timerName']
               }
         },
         methods: {
