@@ -20,7 +20,7 @@
         methods: {
             search(){
                 axios
-                    .get('https://mgtc.herokuapp.com/leaderboard/byName')
+                    .get('https://sarjapura-toastmasters-api.herokuapp.com/leaderboard/byName')
                     .then(response => (this.stats = response.data))
                     .catch(error => console.log(error))
             }

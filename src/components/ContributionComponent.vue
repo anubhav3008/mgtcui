@@ -36,7 +36,7 @@
         methods: {
             getContribution(){
       axios
-      .get('https://mgtc.herokuapp.com/users/contribution/byName/'+this.name)
+      .get('https://sarjapura-toastmasters-api.herokuapp.com/users/contribution/byName/'+this.name)
       .then(response => {
       		alert('search complete');
       		this.contributionList = response.data;
@@ -47,7 +47,7 @@
               if(this.userFetched){
                return;
               }
-              axios.get('https://mgtc.herokuapp.com/users')
+              axios.get('https://sarjapura-toastmasters-api.herokuapp.com/users')
               .then(response => {
                 this.users = response.data.data;
                 this.userFetched=true;

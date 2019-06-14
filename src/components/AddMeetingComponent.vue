@@ -154,7 +154,7 @@
             if(this.autosuggestionFetched){
             return;
             }
-            axios.get('https://mgtc.herokuapp.com/autosuggest/static')
+            axios.get('https://sarjapura-toastmasters-api.herokuapp.com/autosuggest/static')
               .then(response => {
                 this.autosuggestion = response.data.data;
                 this.autosuggestionFetched=true;
@@ -164,7 +164,7 @@
               if(this.userFetched){
                return;
               }
-              axios.get('https://mgtc.herokuapp.com/users')
+              axios.get('https://sarjapura-toastmasters-api.herokuapp.com/users')
               .then(response => {
                 this.users = response.data.data;
                 this.userFetched=true;
@@ -172,7 +172,7 @@
             },
             addOrUpdate(){
                 axios
-                    .post('https://mgtc.herokuapp.com/meetings/addOrUpdate',
+                    .post('https://sarjapura-toastmasters-api.herokuapp.com/meetings/addOrUpdate',
                         {
                             meeting:  this.meeting,
                             goal:this.goal,
@@ -205,7 +205,7 @@
             },
             search(){
                 axios
-                    .get('https://mgtc.herokuapp.com/meetings/'+this.searchMeetingNumber)
+                    .get('https://sarjapura-toastmasters-api.herokuapp.com/meetings/'+this.searchMeetingNumber)
                     .then((response) => {
                         this.goal = response.data.data.goal;
                         this.speech=response.data.data.speech;
@@ -222,10 +222,10 @@
             } ,
             save(){
                 if(this.meeting.id !=null){
-                    window.location.href = 'http://mgtc.herokuapp.com/communication/agenda/' + this.meeting.id;
+                    window.location.href = 'http://sarjapura-toastmasters-api.herokuapp.com/communication/agenda/' + this.meeting.id;
                 }
                 else if(this.searchMeetingNumber !=null) {
-                    window.location.href = 'http://mgtc.herokuapp.com/communication/agenda/' + this.searchMeetingNumber;
+                    window.location.href = 'http://sarjapura-toastmasters-api.herokuapp.com/communication/agenda/' + this.searchMeetingNumber;
                 }
                 else {
                     alert("Meeting id not found, please refresh and try again!")

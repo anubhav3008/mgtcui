@@ -21,7 +21,7 @@
         methods: {
             search(){
                 axios
-                    .get('https://mgtc.herokuapp.com/meetings')
+                    .get('https://sarjapura-toastmasters-api.herokuapp.com/meetings')
                     .then(response => (this.meetingList = response.data))
                     .catch(error => console.log(error))
             }
