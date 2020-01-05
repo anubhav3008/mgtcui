@@ -3,5 +3,7 @@ export default {
   '/meetings':'Meetings',
   '/search':'Search',
   '/contribution':'Contribution',
-  '/leaderBoard':'LeaderBoard'
+  '/leaderBoard':'LeaderBoard',
+  '/privacy':'PrivacyPolicy',
+   
 }
