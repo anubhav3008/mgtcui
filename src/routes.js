@@ -3,5 +3,6 @@ export default {
   '/meetings':'Meetings',
   '/search':'Search',
   '/contribution':'Contribution',
-  '/leaderBoard':'LeaderBoard'
+  '/leaderBoard':'LeaderBoard',
+  '/meetingSummary':'MeetingSummary'
 }
