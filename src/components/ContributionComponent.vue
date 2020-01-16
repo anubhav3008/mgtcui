@@ -36,7 +36,7 @@
         methods: {
             getContribution(){
       axios
-      .get('https://sarjapura-toastmasters-api.herokuapp.com/users/contribution/byName/'+this.name)
+      .get('https://srtmc-backend.azurewebsites.net/mgtc-1.0.0/users/contribution/byName/'+this.name)
       .then(response => {
       		alert('search complete');
       		this.contributionList = response.data;
@@ -47,7 +47,7 @@
               if(this.userFetched){
                return;
               }
-              axios.get('https://sarjapura-toastmasters-api.herokuapp.com/users')
+              axios.get('https://srtmc-backend.azurewebsites.net/mgtc-1.0.0/users')
               .then(response => {
                 this.users = response.data.data;
                 this.userFetched=true;

@@ -21,7 +21,7 @@
         methods: {
             search(){
                 axios
-                    .get('https://sarjapura-toastmasters-api.herokuapp.com/meetings')
+                    .get('https://srtmc-backend.azurewebsites.net/mgtc-1.0.0/meetings')
                     .then(response => (this.meetingList = response.data))
                     .catch(error => console.log(error))
             }
