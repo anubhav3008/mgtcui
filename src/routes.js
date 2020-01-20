@@ -4,6 +4,7 @@ export default {
   '/search':'Search',
   '/contribution':'Contribution',
   '/leaderBoard':'LeaderBoard',
+  '/users' : 'Users',
   '/privacy':'PrivacyPolicy',
    
 }
