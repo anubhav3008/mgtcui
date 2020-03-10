@@ -221,15 +221,26 @@
                 this.goal.splice(index,1);
             } ,
             save(){
-                if(this.meeting.id !=null){
-                    window.location.href = 'https://srtmc-backend.azurewebsites.net/mgtc-1.0.0/communication/agenda/' + this.meeting.id;
-                }
-                else if(this.searchMeetingNumber !=null) {
-                    window.location.href = 'https://srtmc-backend.azurewebsites.net/mgtc-1.0.0/communication/agenda/' + this.searchMeetingNumber;
-                }
-                else {
-                    alert("Meeting id not found, please refresh and try again!")
-                }
+                axios
+                    .post('https://sarjapura-toastmasters-api.herokuapp.com/meetings/addOrUpdate',
+                        {
+                            meeting:  this.meeting,
+                            goal:this.goal,
+                            speech:this.speech
+                        }
+                    )
+                    .then((response) => {
+                    if( this.meeting.id !=null ){
+                        window.location.href = 'http://sarjapura-toastmasters-api.herokuapp.com/communication/agenda/' + this.meeting.id;
+                    }
+                    else if(this.searchMeetingNumber !=null) {
+                        window.location.href = 'http://sarjapura-toastmasters-api.herokuapp.com/communication/agenda/' + this.searchMeetingNumber;
+                        }
+                    else {
+                        alert("Meeting id not found, please refresh and try again!")
+                    }
+                    })
+                    .catch(error => console.log(error))
             }
         }
     }
