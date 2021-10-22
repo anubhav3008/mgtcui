@@ -231,10 +231,10 @@
                     )
                     .then((response) => {
                     if( this.meeting.id !=null ){
-                        window.location.href = 'http://sarjapura-toastmasters-api.herokuapp.com/communication/agenda/' + this.meeting.id;
+                        window.location.href = 'https://sarjapura-toastmasters-api.herokuapp.com/communication/agenda/' + this.meeting.id;
                     }
                     else if(this.searchMeetingNumber !=null) {
-                        window.location.href = 'http://sarjapura-toastmasters-api.herokuapp.com/communication/agenda/' + this.searchMeetingNumber;
+                        window.location.href = 'https://sarjapura-toastmasters-api.herokuapp.com/communication/agenda/' + this.searchMeetingNumber;
                         }
                     else {
                         alert("Meeting id not found, please refresh and try again!")
